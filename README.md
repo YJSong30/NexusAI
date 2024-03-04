@@ -12,19 +12,30 @@ FastAPI backend through HTTP requests. The backend then interacts with the AWS S
 
 ### Backend
 1. Create virtual environment
-```
-python3 -m venv .venv
-```
+- UNIX
+    ```
+    python3 -m venv .venv
+    ```
+- Windows cmd
+    ```
+    c:\>Python35\python -m venv .venv
+    ```
 
 2. Activate venv
-```
-source .venv/bin/activate
-```
+- UNIX
+    ```
+    source .venv/bin/activate
+    ```
+- Windows cmd
+    ```
+    .venv\Scripts\activate.bat
+    ```
 
 3. Install all dependencies in `requirements.txt`
 ```
 pip install -r requirements.txt
 ```
+
 
 4. Start uvicorn server
 ```
