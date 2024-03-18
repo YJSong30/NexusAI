@@ -1,7 +1,17 @@
-import { useState, useEffect } from "react";
-import GenImage from "./components/GenImage";
-import Header from "./components/Header";
+import React from 'react';
+//import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import MainScreen from './MainScreen';
+//import GenImage from "./components/GenImage";
+//import Header from "./components/Header";
+//import { useState, useEffect } from "react";
 
+const App = () => {
+  return (
+    <MainScreen />
+  );
+};
+
+/*
 const App = () => {
   // create message
   const [message, setMessage] = useState("");
@@ -38,5 +48,5 @@ const App = () => {
     </>
   );
 };
-
+*/
 export default App;
