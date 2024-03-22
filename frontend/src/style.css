@@ -97,7 +97,8 @@ html, body {
 }
 
 .backdrop-content p {
-    font-size: 19px;
+    font-size: 20px;
+    padding: 15px;
 }
 
 .about-content {
@@ -137,3 +138,6 @@ html, body {
 }
 
 
+.columns {
+    color: white;
+}

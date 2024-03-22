@@ -53,7 +53,7 @@ const GenImage = () => {
 
     return (
         <>
-        <div className="columns is-vcentered">
+        <div className="columns is-vcentered poppins-regular">
             <div className="column">
                 <form className="box" onSubmit={handleSubmit}>
                     <h1 className="title has-text-centered is-4">Generate Image with Stable Diffuser</h1>
