@@ -48,3 +48,50 @@
 #nav #logo {
     font-size: 17px;
 }
+
+.backdrop-container {
+    position: relative;
+    text-align: center;
+    color: white;
+    background-image: url('https://img.craftpix.net/2017/09/Free-Horizontal-2D-Game-Backgrounds-3.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 600px;
+}
+
+.backdrop-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.backdrop-button {
+    background-color: #0066ff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.backdrop-content h1 {
+    font-size: 60px;
+    line-height: 70px;
+}
+
+.backdrop-content p {
+    font-size: 18px;
+}
+  /*
+.backdrop-container {
+    background: url(./images/2d-glacierscene-backdrop.png) lightgray 50% / cover no-repeat;
+    mix-blend-mode: overlay;
+    align-items: center;
+}
+*/
