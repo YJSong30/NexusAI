@@ -4,7 +4,7 @@ import Main from './components/Main';
 
 const MainScreen = () => {
   return (
-    <div>
+    <div class='main-screen'>
       <NavBar />
       <Main />
     </div>
