@@ -6,18 +6,17 @@ FROM node:14-alpine as build
 WORKDIR /app
 
 # copy package.json package-lock.json
-COPY package*.json ./
+COPY frontend/package*.json ./
+# COPY package*.json ./
 
 # Install npm dependencies
 RUN npm install
 
 # Copy rest of app to container
-COPY . .
+COPY frontend/ .
+# COPY ./ .
 
-# Build app
-RUN npm run build
-
-EXPOSE 8080
+EXPOSE 3000
 
 # TODO: setup nginx?
 

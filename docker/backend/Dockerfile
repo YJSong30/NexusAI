@@ -4,13 +4,15 @@ FROM python:3.10-slim as build
 WORKDIR /app
 
 # Copy requirements.txt
-COPY ./backend/requirements.txt ./
+COPY backend/requirements.txt ./
+# COPY requirements.txt ./
 
 # install pip dependencies
-RUN pip install -r --no-cache-dir requirements.txt
+RUN pip install -r requirements.txt
 
 # Copy rest of backend app
-COPY . .
+COPY backend/. .
+# COPY . .
 
 EXPOSE 8081
 
