@@ -13,10 +13,10 @@ import schemas
 
 load_dotenv(dotenv_path='./.env')
 aws_configs = {
-    'AWS_ACCESS_KEY_ID': os.getenv("AWS_ACCESS_KEY_ID"),
-    'AWS_SECRET_ACCESS_KEY': os.getenv("AWS_SECRET_ACCESS_KEY"),
+    'ACCESS_KEY_ID': os.getenv("AWS_ACCESS_KEY_ID"),
+    'SECRET_ACCESS_KEY': os.getenv("AWS_SECRET_ACCESS_KEY"),
     'SAGEMAKER_ENDPOINT': os.getenv('SAGEMAKER_ENDPOINT'),
-    'AWS_REGION': os.getenv('AWS_REGION')
+    'REGION': os.getenv('AWS_REGION')
 }
 
 # Verify configurations before running server
@@ -25,7 +25,12 @@ for config, val in aws_configs.items():
         raise Exception(f'Missing AWS config "{config}". Make sure to setup `.env` file')
 
 # initialize sagemaker client
-sagemaker = boto3.client('sagemaker-runtime')
+sagemaker = boto3.client(
+    'sagemaker-runtime',
+    region_name=aws_configs['REGION'],
+    aws_access_key_id=aws_configs['ACCESS_KEY_ID'],
+    aws_secret_access_key=aws_configs['SECRET_ACCESS_KEY']
+)
 
 app = FastAPI()
 
@@ -90,4 +95,4 @@ async def generate_image(request_data: schemas.PromptRequest = Body(...)):
 
 # Run the FastAPI server
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run(app, host="0.0.0.0", port=8081)
