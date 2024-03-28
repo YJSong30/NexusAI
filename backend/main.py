@@ -7,8 +7,9 @@ import os
 import base64
 from PIL import Image
 from io import BytesIO
-from pydantic import BaseModel
 # import matplotlib.pyplot as plt
+
+import schemas
 
 load_dotenv(dotenv_path='./.env')
 aws_configs = {
@@ -38,18 +39,20 @@ def read_root():
 async def root():
     return {"message": "Welcome to the Demo of StableDiffusers with FastAPI"}
 
-def decode_base64_image(image_string):
+def decode_base64_image(image_string: str):
+    """
+    Decode base64 string to image
+    
+    params:
+        - image_string: base64 string from Sagemaker Endpoint to be decoded
+    """
     base64_image = base64.b64decode(image_string)
     buffer = BytesIO(base64_image)
     return Image.open(buffer)
 
-
-class PromptRequest(BaseModel):
-    prompt: str
-
 # called when POST request is made to the /generate-image/ endpoint
 @app.post("/generate-image")
-async def generate_image(request_data: PromptRequest = Body(...)):
+async def generate_image(request_data: schemas.PromptRequest = Body(...)):
     prompt = request_data.prompt
 
     print("received prompt: ", prompt)
@@ -65,8 +68,7 @@ async def generate_image(request_data: PromptRequest = Body(...)):
         response = sagemaker.invoke_endpoint(
             EndpointName=aws_configs['SAGEMAKER_ENDPOINT'],
             Body=serialized_payload,
-            ContentType='application/json',
-            EnableExplanations='`true`'
+            ContentType='application/json'
         )
         print(response)
 
@@ -74,11 +76,13 @@ async def generate_image(request_data: PromptRequest = Body(...)):
 
         # Decode images
         decoded_images = [decode_base64_image(image) for image in response_payload["generated_images"]]
+        print("decoded_images:", decoded_images)
 
         # Visualize generation
         # display_images(decoded_images)
 
         base64_images = [base64.b64encode(image_file.getvalue()).decode('utf-8') for image_file in [BytesIO(image.tobytes()) for image in decoded_images]]
+
         return {"generated_images": base64_images}
 
     except Exception as e:

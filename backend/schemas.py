@@ -1,11 +1,6 @@
-import pydantic as _pydantic
-from typing import Optional
+# schemas.py - Contain pydantic models used for FastAPI requests
+from pydantic import BaseModel
 
-class _PromptBase(_pydantic.BaseModel):
-    seed: Optional[int] = 42
-    num_inference_steps: int = 10
-    guidance_scale: float = 7.5
-
-
-class ImageCreate(_PromptBase):
+class PromptRequest(BaseModel):
+    """Prompt Request Schema for /generate-images endpoint"""
     prompt: str
