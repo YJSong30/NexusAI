@@ -1,8 +1,11 @@
 fastapi[all]
-diffusers==0.10.0
-transformers
-scipy
+# diffusers==0.10.0
+# transformers
+# scipy
 ftfy
-accelerate
-torch
+# accelerate
+# torch
 uvicorn[standard]
+boto3
+pillow
+python-dotenv
