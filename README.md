@@ -9,46 +9,27 @@ This full-stack project utilizes different technologies for the frontend and bac
 FastAPI backend through HTTP requests. The backend then interacts with the AWS SageMaker endpoint, where the model that we trained is deployed. 
 
 ## Getting Started
+### Prerequisites
+- Docker
 
-### Backend
-1. Create virtual environment
-- UNIX
+### Local dev setup
+1. Setup `.env` file in the `/backend` directory with the AWS configurations:
     ```
-    python3 -m venv .venv
-    ```
-- Windows cmd
-    ```
-    c:\>Python35\python -m venv .venv
-    ```
-
-2. Activate venv
-- UNIX
-    ```
-    source .venv/bin/activate
-    ```
-- Windows cmd
-    ```
-    .venv\Scripts\activate.bat
+    AWS_ACCESS_KEY_ID=<access-key>
+    AWS_SECRET_ACCESS_KEY=<secret-access-key>
+    SAGEMAKER_ENDPOINT=<sagemaker-api-endpoint>
+    AWS_REGION=<region>
     ```
 
-3. Install all dependencies in `requirements.txt`
-```
-pip install -r requirements.txt
-```
+2. Start docker containers with `docker compose`
+    - Start docker services
+        ```
+        docker compose up
+        ```
 
+    - Stop docker services
+        ```
+        docker compose down
+        ```
 
-4. Start uvicorn server
-```
-uvicorn main:app
-```
-
-### Frontend
-1. Install npm packages
-```
-npm install
-```
-
-2. Serve React app
-```
-npm run start
-```
+## Contributors

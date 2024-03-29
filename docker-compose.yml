@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  frontend:
+    build:
+      # Specify directory of the Dockerfile
+      context: .
+      # Specify name of Dockerfile
+      dockerfile: docker/frontend/Dockerfile
+    # map port 8080 from host to 8080 in container
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    stdin_open: true
+    tty: true
+
+  backend:
+    build:
+      context: .
+      dockerfile: docker/backend/Dockerfile
+    # map port 8081 from host to 8081 in container
+    env_file:
+      - ./backend/.env
+    ports:
+      - "8080:8080"
