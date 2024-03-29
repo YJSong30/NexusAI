@@ -13,7 +13,7 @@ const NavBar = () => {
             </ul>
             <ul id='nav-auth' className='poppins-regular'>
               <li>Sign In</li>
-              <li>Get Started</li>
+              <li id='get-started'>Get Started</li>
             </ul>
         </div>
     </nav>
