@@ -16,6 +16,10 @@ const FAQ = () => {
             <h4 class="poppins-bold">Does the AI create unique images?</h4>
             <p class="poppins-regular">Yes, NexusAI generates unique images tailored to your needs. However, to unlock its full potential, prompts should include one of our 20 pre-defined keywords, such as '2D-cavescene', '2D-townscene', etc. This approach ensures that the AI precisely understands the context and style you're aiming for, resulting in images that are both unique and aligned with your vision.</p>
         </div>
+        <div class="faq-question">
+            <h4 class="poppins-bold">What are the system requirements to use NexusAI?</h4>
+            <p class="poppins-regular">NexusAI is a cloud-based platform, meaning you can access it from any device with an internet connection and a web browser. There are no specific system requirements to use our service.</p>
+        </div>
     </div>
     );
 };
