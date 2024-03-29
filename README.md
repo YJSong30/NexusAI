@@ -22,14 +22,18 @@ FastAPI backend through HTTP requests. The backend then interacts with the AWS S
     ```
 
 2. Start docker containers with `docker compose`
-    - Start docker services
+    - Start docker services:
         ```
         docker compose up
         ```
 
-    - Stop docker services
+    - Stop docker services:
         ```
         docker compose down
         ```
-
+   - If you made changes to the `Dockerfiles` or `docker-compose.yml`:
+        ```
+        docker compose down
+        docker compose up --build  # rebuild services with changes
+        ```
 ## Contributors
