@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 
 const GenImage = () => {
@@ -34,16 +34,21 @@ const GenImage = () => {
     };
 
     setLoadingImg(true);
-    const response = await fetch(`/generate-image`, requestOptions);
+
+    // fetch the data from the backend
+    const response = await fetch(
+      `http://localhost:8080/generate-image`,
+      requestOptions
+    );
 
     if (!response.ok) {
       setErrorMessage("Ooops! Something went wrong generating the image");
     } else {
-      const imageBlob = await response.blob();
-      const imageObjectURL = URL.createObjectURL(imageBlob);
-      setImg(imageObjectURL);
+      const data = await response.json();
+      console.log(data);
+
       setPromptImg(prompt);
-      cleanFormData();
+      setImg(data.img);
     }
   };
 
@@ -115,26 +120,23 @@ const GenImage = () => {
             </div>
             <ErrorMessage message={errorMessage} />
             <br />
+
             <button className="button is-primary" type="submit">
               Generate Image
             </button>
           </form>
         </div>
         <div className="column">
-          {img ? (
+          {img && (
             <figure>
-              <img src={img} alt="genimage" />
+              <img src={img} alt="Generated Image" />
               <figcaption>{promptImg}</figcaption>
             </figure>
-          ) : (
-            <></>
           )}
-          {loadingImg ? (
+          {loadingImg && (
             <progress className="progress is-small is-primary" max="100">
               Loading
             </progress>
-          ) : (
-            <></>
           )}
         </div>
       </div>
