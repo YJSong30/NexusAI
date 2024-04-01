@@ -26,10 +26,10 @@ const GenImage = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        prompt,
-        seed,
-        guidanceScale,
-        numInfSteps,
+        "prompt": prompt,
+        // seed,            <-- these are not necessary 
+        // guidanceScale,   <--
+        // numInfSteps,     <--
       }),
     };
 
@@ -52,6 +52,7 @@ const GenImage = () => {
     }
   };
 
+  // Getting error on form submit: `"OPTIONS /generate-image HTTP/1.1" 405 Method Not Allowed`
   const handleSubmit = (e) => {
     e.preventDefault();
     setImg(null);
