@@ -11,14 +11,14 @@ const GenImage = () => {
   const [promptImg, setPromptImg] = useState(null);
   const [loadingImg, setLoadingImg] = useState(false);
 
-  const cleanFormData = () => {
-    setPrompt("");
-    setSeed(42);
-    setGuidanceScale(7.5);
-    setNumInfSteps(5);
-    setLoadingImg(false);
-    setErrorMessage("");
-  };
+  //   const cleanFormData = () => {
+  //     setPrompt("");
+  //     setSeed(42);
+  //     setGuidanceScale(7.5);
+  //     setNumInfSteps(5);
+  //     setLoadingImg(false);
+  //     setErrorMessage("");
+  //   };
 
   // create a function that handles creating the lead
   const handleGenerateImage = async (e) => {
@@ -26,8 +26,8 @@ const GenImage = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        "prompt": prompt,
-        // seed,            <-- these are not necessary 
+        prompt: prompt,
+        // seed,            <-- these are not necessary
         // guidanceScale,   <--
         // numInfSteps,     <--
       }),
@@ -42,7 +42,7 @@ const GenImage = () => {
     );
 
     if (!response.ok) {
-      setErrorMessage("Ooops! Something went wrong generating the image");
+      setErrorMessage("Oops! Something went wrong generating the image");
     } else {
       const data = await response.json();
       console.log(data);
@@ -52,7 +52,6 @@ const GenImage = () => {
     }
   };
 
-  // Getting error on form submit: `"OPTIONS /generate-image HTTP/1.1" 405 Method Not Allowed`
   const handleSubmit = (e) => {
     e.preventDefault();
     setImg(null);

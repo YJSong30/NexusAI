@@ -71,34 +71,30 @@ def decode_base64_image(image_string: str):
 async def generate_image(request_data: schemas.PromptRequest = Body(...)):
     prompt = request_data.prompt
     print("received prompt: ", prompt)
-    return {'prompt': prompt}
+    
+    try:
+        num_images_per_prompt = 1
+        payload = {
+            "inputs": prompt,
+            "num_images_per_prompt": num_images_per_prompt
+        }
+        serialized_payload = json.dumps(payload)
+        # print("Serialized payload:", serialized_payload)
 
-    # prompt = request_data.prompt
+        response = sagemaker.invoke_endpoint(
+            EndpointName=aws_configs['SAGEMAKER_ENDPOINT'],
+            Body=serialized_payload,
+            ContentType='application/json'
+        )
+        # print(response)
 
-    # print("received prompt: ", prompt)
-    # try:
-    #     num_images_per_prompt = 1
-    #     payload = {
-    #         "inputs": prompt,
-    #         "num_images_per_prompt": num_images_per_prompt
-    #     }
-    #     serialized_payload = json.dumps(payload)
-    #     # print("Serialized payload:", serialized_payload)
+        response_payload = json.loads(response['Body'].read().decode("utf-8"))
+        # print(response_payload)
 
-    #     response = sagemaker.invoke_endpoint(
-    #         EndpointName=aws_configs['SAGEMAKER_ENDPOINT'],
-    #         Body=serialized_payload,
-    #         ContentType='application/json'
-    #     )
-    #     # print(response)
+        return response_payload
 
-    #     response_payload = json.loads(response['Body'].read().decode("utf-8"))
-    #     # print(response_payload)
-
-    #     return response_payload
-
-    # except Exception as e:
-    #     raise HTTPException(status_code=500, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
 
 # Run the FastAPI server
 if __name__ == "__main__":
