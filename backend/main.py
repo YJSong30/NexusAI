@@ -7,6 +7,7 @@ import os
 import base64
 from PIL import Image
 from io import BytesIO
+from fastapi.middleware.cors import CORSMiddleware
 # import matplotlib.pyplot as plt
 
 import schemas
@@ -33,6 +34,16 @@ sagemaker = boto3.client(
 )
 
 app = FastAPI()
+
+# Add CORS middleware to allow requests from frontend
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
 
 
 @app.get("/")
