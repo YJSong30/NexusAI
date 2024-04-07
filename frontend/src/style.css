@@ -1,42 +1,43 @@
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #161616;
-  }
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #161616;
+}
 
 #nav-box {
-    list-style-type: none;
-    margin: 0; 
-    padding: 0; 
-    display: flex; 
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 0.5px solid #4D4D4D;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid #4d4d4d;
 }
 
 #nav {
-    padding-left: 160px;
+  padding-left: 160px;
 }
 
 #nav-auth {
-    display: flex;
-    justify-content: flex-end;
-    padding-right: 160px;
-    padding-left: 0px;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 160px;
+  padding-left: 0px;
 }
 
 #nav li {
-    display: inline-block;
-    color: white;
-    margin-right: 90px;
-    font-size: 15px;
+  display: inline-block;
+  color: white;
+  margin-right: 90px;
+  font-size: 15px;
 }
 
 #nav-auth li {
-    display: inline-block;
-    color: white;
-    margin-left: 90px;
-    font-size: 15px;
+  display: inline-block;
+  color: white;
+  margin-left: 90px;
+  font-size: 15px;
 }
 
 /*
@@ -47,137 +48,134 @@ html, body {
 */
 
 .poppins-regular {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    color: white;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: white;
 }
 
 .poppins-bold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 700;
-    font-style: normal;
-    color: white
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+  color: white;
 }
 
 #nav #logo {
-    font-size: 19px;
+  font-size: 19px;
 }
 
 .backdrop-container {
-    position: relative;
-    text-align: center;
-    color: white;
-    background-image: url(./images/2d-main-backdrop.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 680px;
+  position: relative;
+  text-align: center;
+  color: white;
+  background-image: url(./images/2d-main-backdrop.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 680px;
 }
 
 .backdrop-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .backdrop-button {
-    background-color: #0066ff;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    padding: 15px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 18px;
-    margin: 4px 2px;
-    cursor: pointer;
+  background-color: #0066ff;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 18px;
+  margin: 4px 2px;
+  cursor: pointer;
 }
 
 .backdrop-content h1 {
-    font-size: 72px;
-    line-height: 85px;
-    display: inline-block;
-    margin: 0px;
-    width: 800px;
+  font-size: 72px;
+  line-height: 85px;
+  display: inline-block;
+  margin: 0px;
+  width: 800px;
 }
 
 .backdrop-content p {
-    font-size: 20px;
-    padding: 10px;
+  font-size: 20px;
+  padding: 10px;
 }
 
-
 .about-content {
-    padding-top: 20px;
-    text-align: center;
-    /* border: 1px solid white; */
-
+  padding-top: 20px;
+  text-align: center;
+  /* border: 1px solid white; */
 }
 
 .about-content h2 {
-    font-size: 35px;
+  font-size: 35px;
 }
 
 .about-content p {
-    display: inline-block;
-    margin: auto;
-    width: 65%;
-    padding-bottom: 40px;
-    font-size: 18px;
+  display: inline-block;
+  margin: auto;
+  width: 65%;
+  padding-bottom: 40px;
+  font-size: 18px;
 }
 
 .about-image-container {
-    display: flex;
-    flex-wrap: wrap;
-    margin: 0 160px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    row-gap: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 160px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  row-gap: 32px;
 }
 
 .about-image-container img {
-    width: 260px;
-    height: 260px;
-    border-radius: 10px;
-    border: 1px solid #515151;
+  width: 260px;
+  height: 260px;
+  border-radius: 10px;
+  border: 1px solid #515151;
 }
 
-
 .columns {
-    color: white;
+  color: white;
 }
 
 .faq-container h2 {
-    text-align: center;
-    font-size: 35px;
+  text-align: center;
+  font-size: 35px;
 }
 
 .faq-container h4 {
-    font-size: 20px;
-    margin: 20px 0;
+  font-size: 20px;
+  margin: 20px 0;
 }
 
 .faq-container p {
-    font-size: 16px;
-    margin: 0 0 10px 0;
-    padding-left: 50px;
+  font-size: 16px;
+  margin: 0 0 10px 0;
+  padding-left: 50px;
 }
 
 .faq-container {
-    padding: 17px 160px;
+  padding: 17px 160px;
 }
 
 .faq-question {
-    padding-bottom: 15px;
-    border-bottom: 1px solid white;
+  padding-bottom: 15px;
+  border-bottom: 1px solid white;
 }
 
 .copyright-div {
-    text-align: center;
-    font-size: 15px;
-    border-top: 0.5px solid #4D4D4D;
+  text-align: center;
+  font-size: 15px;
+  border-top: 0.5px solid #4d4d4d;
 }

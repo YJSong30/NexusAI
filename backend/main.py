@@ -65,6 +65,7 @@ def decode_base64_image(image_string: str):
     base64_image = base64.b64decode(image_string)
     buffer = BytesIO(base64_image)
     return Image.open(buffer)
+    
 
 # called when POST request is made to the /generate-image/ endpoint
 @app.post("/generate-image")
@@ -78,20 +79,24 @@ async def generate_image(request_data: schemas.PromptRequest = Body(...)):
             "inputs": prompt,
             "num_images_per_prompt": num_images_per_prompt
         }
+        
         serialized_payload = json.dumps(payload)
-        # print("Serialized payload:", serialized_payload)
+        print("Serialized payload:", serialized_payload)
 
         response = sagemaker.invoke_endpoint(
             EndpointName=aws_configs['SAGEMAKER_ENDPOINT'],
             Body=serialized_payload,
             ContentType='application/json'
         )
-        # print(response)
-
+        
+        # Deserialize response from sagemaker endpoint
         response_payload = json.loads(response['Body'].read().decode("utf-8"))
-        # print(response_payload)
 
-        return response_payload
+        print("Response payload:", response_payload)
+        return response_payload["generated_images"]
+        
+
+
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
