@@ -36,20 +36,27 @@ const GenImage = () => {
     setLoadingImg(true);
 
     // fetch the data from the backend
-    const response = await fetch(
-      `http://localhost:8080/generate-image`,
-      requestOptions
-    );
+  //   const response = await fetch(
+  //     `http://localhost:8080/generate-image`,
+  //     requestOptions
+  //   );
 
-    if (!response.ok) {
-      setErrorMessage("Oops! Something went wrong generating the image");
-    } else {
-      const data = await response.json();
-      console.log(data);
+  //   if (!response.ok) {
+  //     setErrorMessage("Oops! Something went wrong generating the image");
+  //   } else {
+  //     const data = await response.json();
+  //     console.log(data);
 
-      setPromptImg(prompt);
-      setImg(data.img);
-    }
+  //     setPromptImg(prompt);
+  //     setImg(data.img);
+  //   }
+  // };
+    const exampleDecodedString = await fetch("example_decoded_string.txt").then((response) => response.text());
+
+    setPromptImg("Example Image");
+    setImg("data:image/png;base64," + exampleDecodedString);
+    
+    setLoadingImg(false);
   };
 
   const handleSubmit = (e) => {
@@ -57,6 +64,7 @@ const GenImage = () => {
     setImg(null);
     setPromptImg(null);
     handleGenerateImage();
+    
   };
 
   return (
@@ -130,6 +138,7 @@ const GenImage = () => {
           {img && (
             <figure>
               <img src={img} alt="Generated Image" />
+              
               <figcaption>{promptImg}</figcaption>
             </figure>
           )}
