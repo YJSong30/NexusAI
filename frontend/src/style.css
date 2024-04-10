@@ -84,9 +84,9 @@ body {
 }
 
 .backdrop-button {
-  background-color: #0066ff;
+  background-color: #08c;
   border: none;
-  border-radius: 6px;
+  border-radius: 12px;
   color: white;
   padding: 15px 30px;
   text-align: center;
@@ -95,7 +95,13 @@ body {
   font-size: 18px;
   margin: 4px 2px;
   cursor: pointer;
+  transition: filter .3s cubic-bezier(0.61, 0.01, 0.58, 1);
 }
+
+.backdrop-button:hover {
+  filter: brightness(80%); /* Adjust brightness or add any other desired hover effect */
+}
+
 
 .backdrop-content h1 {
   font-size: 72px;
