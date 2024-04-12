@@ -95,13 +95,14 @@ body {
   font-size: 18px;
   margin: 4px 2px;
   cursor: pointer;
-  transition: filter .3s cubic-bezier(0.61, 0.01, 0.58, 1);
+  transition: filter 0.1s cubic-bezier(0.61, 0.01, 0.58, 1);
 }
 
 .backdrop-button:hover {
-  filter: brightness(80%); /* Adjust brightness or add any other desired hover effect */
+  filter: brightness(
+    80%
+  ); /* Adjust brightness or add any other desired hover effect */
 }
-
 
 .backdrop-content h1 {
   font-size: 72px;
