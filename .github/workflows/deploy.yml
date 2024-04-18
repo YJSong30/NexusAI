@@ -7,7 +7,8 @@ on:
 
 env:
   applicationfolder: /
-  AWS_REGION: ${{ secrets.AWS_REGION }}
+    # AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_REGION: us-west-2
   S3BUCKET: nexus-ai-github-actions-test
 
 
@@ -25,38 +26,35 @@ jobs:
       - name: Check env vars 2
         run: echo ${{ secrets.AWS_REGION }}
       
-          #  build:
-          #    needs: test
-          #    name: Build and Package
-          #    runs-on: ubuntu-latest
-          #    permissions:
-          #      id-token: write
-          #      contents: read
-          #    steps:
-          #      - name: Print start message
-          #        run: echo "Starting build"
-          #
-          #      - name: Check env vars
-          #        run: echo "${{ secrets.AWS_REGION }}" | echo ${{ secrets.S3BUCKET }}
-          #
-          #      - name: Checkout Repository
-          #        uses: actions/checkout@v2
-          #
-          #      - uses: aws-actions/configure-aws-credentials@v1
-          #        with:
-          #          role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
-          #          role-session-name: GitHub-Action-Role
-          #          aws-region: $AWS_REGION
-          #
-          #      - name: chmod
-          #        run: chmod -R +x ./.github
-          #          
-          #      - name: Upload Artifact to s3
-          #        working-directory: ${{ env.applicationfolder }}/target
-          #        run: aws s3 cp *.war s3://${{ env.S3BUCKET }}/
-          #
-          #      - name: Print end message
-          #        run: echo "Completed building artifact to s3 successfully"
+  build:
+    needs: test
+    name: Build and Package
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          # role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
+          # role-session-name: GitHub-Action-Role
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: List S3 buckets
+        run: aws s3 ls
+
+          # - name: chmod
+          #   run: chmod -R +x ./.github
+          
+          #- name: Upload Artifact to s3
+          #  working-directory: ${{ env.applicationfolder }}/target
+          #  run: aws s3 cp *.war s3://${{ env.S3BUCKET }}/
+
         
           #  deploy:
           #    needs: build
