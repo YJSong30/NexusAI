@@ -104,3 +104,4 @@ async def generate_image(request_data: schemas.PromptRequest = Body(...)):
 # Run the FastAPI server
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8081)
+
