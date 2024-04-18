@@ -1,3 +1,6 @@
+# Secret AWS key pair
+*.pem
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
