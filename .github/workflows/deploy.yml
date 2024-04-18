@@ -1,54 +1,84 @@
 name: Build and Deploy
 
 on:
-  workflow_dispatch: {}
+  push:
+    branches:
+      - NickAhn/ci-cd
 
 env:
   applicationfolder: /
-  AWS_REGION: ##region##
-  S3BUCKET: ##s3-bucket## 
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  S3BUCKET: nexus-ai-github-actions-test
 
 
 jobs:
-  build:
-    name: Build and Package
+  test:
+    name: test workflow initialization
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
-      - uses: actions/checkout@v2
-        name: Checkout Repository
+      - name: Print start message
+        run: echo "Starting test"
 
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
-          role-session-name: GitHub-Action-Role
-          aws-region: ${{ env.AWS_REGION }}
+      - name: Check env vars
+        run: echo $S3BUCKET
 
-      - name: chmod
-        run: chmod -R +x ./.github
-          
-      - name: Upload Artifact to s3
-        working-directory: ${{ env.applicationfolder }}/target
-        run: aws s3 cp *.war s3://${{ env.S3BUCKET }}/
+      - name: Check env vars 2
+        run: echo ${{ secrets.AWS_REGION }}
+      
+          #  build:
+          #    needs: test
+          #    name: Build and Package
+          #    runs-on: ubuntu-latest
+          #    permissions:
+          #      id-token: write
+          #      contents: read
+          #    steps:
+          #      - name: Print start message
+          #        run: echo "Starting build"
+          #
+          #      - name: Check env vars
+          #        run: echo "${{ secrets.AWS_REGION }}" | echo ${{ secrets.S3BUCKET }}
+          #
+          #      - name: Checkout Repository
+          #        uses: actions/checkout@v2
+          #
+          #      - uses: aws-actions/configure-aws-credentials@v1
+          #        with:
+          #          role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
+          #          role-session-name: GitHub-Action-Role
+          #          aws-region: $AWS_REGION
+          #
+          #      - name: chmod
+          #        run: chmod -R +x ./.github
+          #          
+          #      - name: Upload Artifact to s3
+          #        working-directory: ${{ env.applicationfolder }}/target
+          #        run: aws s3 cp *.war s3://${{ env.S3BUCKET }}/
+          #
+          #      - name: Print end message
+          #        run: echo "Completed building artifact to s3 successfully"
         
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment: Dev
-    permissions:
-      id-token: write
-      contents: read
-    steps:
-    - uses: actions/checkout@v2
-    - uses: aws-actions/configure-aws-credentials@v1
-      with:
-        role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
-        role-session-name: GitHub-Action-Role
-        aws-region: ${{ env.AWS_REGION }}
-    - run: |
-        echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }}"
-        commit_hash=`git rev-parse HEAD`
-        aws deploy create-deployment --application-name nexus-ai-app --deployment-group-name nexus-ai-DprGrp --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
-
+          #  deploy:
+          #    needs: build
+          #    runs-on: ubuntu-latest
+          #    environment: Dev
+          #    permissions:
+          #      id-token: write
+          #      contents: read
+          #    steps:
+          #    - name: Print start messsage
+          #      run: echo "Starting deployment"
+          #
+          #    - uses: actions/checkout@v2
+          #    - uses: aws-actions/configure-aws-credentials@v1
+          #      with:
+          #        role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
+          #        role-session-name: GitHub-Action-Role
+          #        aws-region: ${{ env.AWS_REGION }}
+          #    - run: |
+          #        echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }}"
+          #        commit_hash=`git rev-parse HEAD`
+          #        aws deploy create-deployment --application-name nexus-ai-app --deployment-group-name nexus-ai-DprGrp --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
+          #
+          #    - name: Print end message
+          #      run: echo "Completed deploy job successfully!"
