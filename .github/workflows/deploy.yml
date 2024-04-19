@@ -7,7 +7,6 @@ on:
 
 env:
   applicationfolder: /
-  AWS_REGION: ${{ secrets.AWS_REGION }}
 
 jobs:
   test:
@@ -49,7 +48,7 @@ jobs:
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${AWS_REGION}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Deploy repo with AWS CodeDeploy
         run: |
@@ -60,5 +59,5 @@ jobs:
               --deployment-group-name nexus-ai-DprGrp \
               --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash \
               --ignore-application-stop-failures \
-              --region $AWS_REGION
+              --region ${{ secrets.AWS_REGION }}
 
