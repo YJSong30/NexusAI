@@ -57,7 +57,7 @@ jobs:
           commit_hash=`git rev-parse HEAD`
           aws deploy create-deployment \
               --application-name nexus-ai-app \
-              --deployment-group-name nexus-ai-DprGrp \
+              --deployment-group-name nexus-ai-DplGrp \
               --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash \
               --ignore-application-stop-failures \
               --region us-west-1
