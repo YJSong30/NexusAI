@@ -1,14 +1,22 @@
 #!/bin/bash
 # after-install.sh: run server after installation
 
-# Retrieve secrets from AWS Secrets Manager
-SECRET_VALUE=$(aws secretsmanager get-secret-value --secret-id my-secret --query SecretString --output text)
+# Export github secrets as environment variables if not set
+if [ -z "${AWS_REGION}" ]; then
+    echo "export AWS_REGION=us-west-1" >> ~/.bashrc
+fi
+if [ -z "${AWS_ACCESS_KEY_ID }" ]; then
+    echo "export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> ~/.bashrc
+fi
+if [ -z "${AWS_SECRET_ACCESS_KEY}" ]; then
+    echo "export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> ~/.bashrc
+fi
+if [ -z "${SAGEMAKER_ENDPOINT}" ]; then
+    echo "export SAGEMAKER_ENDPOINT=test" >> ~/.bashrc
+fi
 
-# Parse the JSON string to extract environment variables and export env vars
-export AWS_ACCESS_KEY_ID='${{ secrets.AWS_ACCESS_KEY_ID }}'
-export AWS_SECRET_ACCESS_KEY='${{ secrets.AWS_SECRET_ACCESS_KEY }}'
-export SAGEMAKER_ENDPOINT="test"
-export AWS_REGION=us-west-1
+# Load environment variables
+source ~/.bashrc
 
 cd /home/ubuntu/app
 
