@@ -8,13 +8,26 @@ body {
 }
 
 #nav-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 0.5px solid #4d4d4d;
+}
+
+#nav-box a, #nav-box a:visited, #nav-box a:active, #nav-auth a, #nav-auth a:visited, #nav-auth a:active {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.5px solid #4d4d4d;
+  text-decoration: none;
+  color: white;
+}
+
+#nav-box a:hover, #nav-auth a:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 #nav {
@@ -122,11 +135,11 @@ body {
 .about-content {
   padding-top: 20px;
   text-align: center;
-  /* border: 1px solid white; */
 }
 
-.about-content h2 {
+.about-content h2, .feature-content h2, .tutorial-content h2 {
   font-size: 35px;
+  text-align: center;
 }
 
 .about-content p {
