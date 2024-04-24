@@ -290,3 +290,8 @@ body {
     grid-template-columns: repeat(4, 1fr); 
   }
 }
+
+.generate-picture{
+  margin-top: -50px;
+  margin-bottom: -380px; 
+}

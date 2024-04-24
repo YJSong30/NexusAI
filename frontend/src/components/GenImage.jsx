@@ -1,6 +1,7 @@
 import { useState } from "react";
 //import ErrorMessage from "./ErrorMessage";
 import axios from "axios";
+import pic1 from '../images/pic1.png';
 
 const GenImage = () => {
   const [prompt, setPrompt] = useState("");
@@ -37,6 +38,20 @@ const GenImage = () => {
         </h1>
       </div>
 
+      {generatedImages.length > 0 && (
+        <div className="generate-picture">
+          {generatedImages.map((image, index) => (
+            <img
+              placeholder=""
+              key={index}
+              src={`data:image/png;base64, ${image}`}
+              alt={`Generated image ${index}`}
+            />
+          ))}
+        </div>
+      )}
+
+     
       <div className="search-box">
         <div>
           <form onSubmit={handleSubmit}>
@@ -60,18 +75,6 @@ const GenImage = () => {
           </button>
         </div>
       </div>
-
-      {generatedImages.length > 0 && (
-        <div>
-          {generatedImages.map((image, index) => (
-            <img
-              key={index}
-              src={`data:image/png;base64, ${image}`}
-              alt={`Generated image ${index}`}
-            />
-          ))}
-        </div>
-      )}
     </div>
   );
 };
