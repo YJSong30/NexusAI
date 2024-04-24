@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ErrorMessage from "./ErrorMessage";
+import axios from "axios";
 
 const GenImage = () => {
   const [prompt, setPrompt] = useState("");
