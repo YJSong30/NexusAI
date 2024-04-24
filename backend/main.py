@@ -81,7 +81,7 @@ async def generate_image(request_data: schemas.PromptRequest = Body(...)):
         }
         
         serialized_payload = json.dumps(payload)
-        print("Serialized payload:", serialized_payload)
+        # print("Serialized payload:", serialized_payload)
 
         response = sagemaker.invoke_endpoint(
             EndpointName=aws_configs['SAGEMAKER_ENDPOINT'],
@@ -92,7 +92,7 @@ async def generate_image(request_data: schemas.PromptRequest = Body(...)):
         # Deserialize response from sagemaker endpoint
         response_payload = json.loads(response['Body'].read().decode("utf-8"))
 
-        print("Response payload:", response_payload)
+        # print("Response payload:", response_payload)
         return response_payload["generated_images"]
         
 
