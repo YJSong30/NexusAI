@@ -54,7 +54,7 @@ const FAQ = () => {
         <h4 class="poppins-bold">Is NexusAI only for game developers?</h4>
         <p class="poppins-regular">
           No, NexusAI is not exclusively for game developers. NexusAI is a
-          versatile tool that can cater to creatives, professionals, and
+          versatile tool that can cater to creators, professionals, and
           educators alike, providing them with a seamless way to generate images
           for their projects.
         </p>
