@@ -23,15 +23,36 @@ const GenImage = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={prompt}
-          onChange={(e) => setPrompt(e.target.value)}
-        />
-        <button type="submit">Generate Images</button>
-      </form>
+    <div className="image-container">
+      <div className="generate-header">
+        <h1>
+          Nexus<span>AI</span>
+        </h1>
+      </div>
+
+      <div className="search-box">
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={prompt}
+              onChange={(e) => setPrompt(e.target.value)}
+              placeholder="Enter a prompt"
+              className="form-container"
+            />
+          </form>
+        </div>
+
+        <div className="button-container">
+          <button
+            type="submit"
+            onClick={handleSubmit}
+            className="generate-button"
+          >
+            Generate Image
+          </button>
+        </div>
+      </div>
 
       {generatedImages.length > 0 && (
         <div>
