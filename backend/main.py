@@ -7,6 +7,7 @@ import os
 import base64
 from PIL import Image
 from io import BytesIO
+from fastapi.middleware.cors import CORSMiddleware
 # import matplotlib.pyplot as plt
 
 import schemas
@@ -34,6 +35,16 @@ sagemaker = boto3.client(
 
 app = FastAPI()
 
+# Add CORS middleware to allow requests from frontend
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
+
 
 @app.get("/")
 def read_root():
@@ -54,33 +65,38 @@ def decode_base64_image(image_string: str):
     base64_image = base64.b64decode(image_string)
     buffer = BytesIO(base64_image)
     return Image.open(buffer)
+    
 
 # called when POST request is made to the /generate-image/ endpoint
 @app.post("/generate-image")
 async def generate_image(request_data: schemas.PromptRequest = Body(...)):
     prompt = request_data.prompt
-
     print("received prompt: ", prompt)
+    
     try:
         num_images_per_prompt = 1
         payload = {
             "inputs": prompt,
             "num_images_per_prompt": num_images_per_prompt
         }
+        
         serialized_payload = json.dumps(payload)
-        # print("Serialized payload:", serialized_payload)
+        print("Serialized payload:", serialized_payload)
 
         response = sagemaker.invoke_endpoint(
             EndpointName=aws_configs['SAGEMAKER_ENDPOINT'],
             Body=serialized_payload,
             ContentType='application/json'
         )
-        # print(response)
-
+        
+        # Deserialize response from sagemaker endpoint
         response_payload = json.loads(response['Body'].read().decode("utf-8"))
-        # print(response_payload)
 
-        return response_payload
+        print("Response payload:", response_payload)
+        return response_payload["generated_images"]
+        
+
+
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
