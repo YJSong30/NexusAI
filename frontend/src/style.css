@@ -251,7 +251,7 @@ body {
 }
 
 .generate-button:hover {
-  background: rgb(1, 96, 144);
+  background: #016090;
 }
 
 .back-button {
@@ -270,5 +270,5 @@ body {
 }
 
 .back-button button:hover {
-  background-color: #0a6;
+  background-color: #016090;
 }
