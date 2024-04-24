@@ -24,6 +24,12 @@ const GenImage = () => {
 
   return (
     <div className="image-container">
+      <div className="back-button">
+        <button onClick={() => window.history.back()} className="back-button">
+          Back
+        </button>
+      </div>
+
       <div className="generate-header">
         <h1>
           Nexus<span>AI</span>

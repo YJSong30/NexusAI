@@ -194,9 +194,8 @@ body {
   flex-direction: column;
   margin: auto;
   align-items: center;
-  margin-top: 30px;
+
   margin-bottom: 20px;
-  gap: 30px;
 }
 
 .generate-header {
@@ -218,7 +217,7 @@ body {
   align-items: center;
   border-radius: 50px;
   background: #1b272e;
-  margin-top: 330px;
+  margin-top: 400px;
 }
 
 .form-container {
@@ -252,4 +251,23 @@ body {
 
 .generate-button:hover {
   background: #0a6;
+}
+
+.back-button {
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.back-button button {
+  padding: 10px 20px;
+  background-color: #08c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-button button:hover {
+  background-color: #0a6;
 }
