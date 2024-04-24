@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ErrorMessage from "./ErrorMessage";
 
 const GenImage = () => {

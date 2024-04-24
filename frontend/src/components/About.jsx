@@ -5,6 +5,8 @@ import glacierTopviewImage from '../images/2d-glacier-scene-topview.png';
 import grasslandImage from '../images/2d-grasslandscene.png';
 import townsceneImage from '../images/2d-townscene.png';
 import townsceneNightImage from '../images/2d-townscene-night.png';
+import futureCitySceneImage from '../images/2d-futurecityscene.png';
+import seaSideSceneImage from '../images/2d-seasidescene.png';
 
 const About = () => {
   return (
@@ -15,13 +17,13 @@ const About = () => {
         </div>
         <div class="about-image-container">
             <img src={glacierImage} alt="2d-glacierscene"/>
-            <img src={cyberpunkImage} alt="2d-glacierscene"/>
-            <img src={glacierTopviewImage} alt="2d-glacierscene"/>
-            <img src={grasslandImage} alt="2d-glacierscene"/>
-            <img src={townsceneImage} alt="2d-glacierscene"/>
-            <img src={townsceneNightImage} alt="2d-glacierscene"/>
-            <img src={glacierImage} alt="2d-glacierscene"/>  
-            <img src={cyberpunkImage} alt="2d-glacierscene"/>
+            <img src={cyberpunkImage} alt="2d-cyperpunkscene"/>
+            <img src={glacierTopviewImage} alt="2d-glaciertopviewscene"/>
+            <img src={grasslandImage} alt="2d-grasslandscene"/>
+            <img src={townsceneImage} alt="2d-townscene"/>
+            <img src={townsceneNightImage} alt="2d-townscene-night"/>
+            <img src={futureCitySceneImage} alt="2d-futurecity-scene"/>  
+            <img src={seaSideSceneImage} alt="2d-seasidescene"/>
         </div>
     </div>
   );
