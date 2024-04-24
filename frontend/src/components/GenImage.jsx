@@ -1,14 +1,16 @@
 import { useState } from "react";
 //import ErrorMessage from "./ErrorMessage";
 import axios from "axios";
-import pic1 from '../images/pic1.png';
+import pic1 from "../images/pic1.png";
 
 const GenImage = () => {
   const [prompt, setPrompt] = useState("");
   const [generatedImages, setGeneratedImages] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
       // send prompt to backend
@@ -21,6 +23,8 @@ const GenImage = () => {
       setGeneratedImages(response.data); // update state with generated images
     } catch (error) {
       console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -51,7 +55,6 @@ const GenImage = () => {
         </div>
       )}
 
-     
       <div className="search-box">
         <div>
           <form onSubmit={handleSubmit}>
@@ -66,13 +69,17 @@ const GenImage = () => {
         </div>
 
         <div className="button-container">
-          <button
-            type="submit"
-            onClick={handleSubmit}
-            className="generate-button"
-          >
-            Generate Image
-          </button>
+          {loading ? ( // Render loading indicator instead of button text while loading is true
+            <div className="loader"></div>
+          ) : (
+            <button
+              type="submit"
+              onClick={handleSubmit}
+              className="generate-button"
+            >
+              Generate Image
+            </button>
+          )}
         </div>
       </div>
     </div>
