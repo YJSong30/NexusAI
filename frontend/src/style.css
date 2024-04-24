@@ -219,7 +219,8 @@ body {
 .generate-header {
   font-size: 40px;
   font-weight: 500;
-  padding-bottom: 30px;
+  padding-bottom: 90px;
+  margin-top: -50px;
 }
 
 .generate-header span {
@@ -275,6 +276,7 @@ body {
 .back-button {
   align-self: flex-start;
   padding-left: 20px;
+  padding-bottom: -20px;
 }
 
 .back-button button {
