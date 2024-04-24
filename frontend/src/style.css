@@ -2,7 +2,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #161616;
+  background-color: #1b1b1b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #nav-box {
@@ -185,4 +187,88 @@ body {
   text-align: center;
   font-size: 15px;
   border-top: 0.5px solid #4d4d4d;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.generate-header {
+  font-size: 40px;
+  font-weight: 500;
+  padding-bottom: 30px;
+}
+
+.generate-header span {
+  color: #08c;
+  font-weight: 600;
+}
+
+.search-box {
+  display: flex;
+  width: 1000px;
+  height: 95px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 50px;
+  background: #1b272e;
+  margin-top: 400px;
+}
+
+.form-container {
+  background: transparent;
+  width: 600px;
+  height: 50px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: white;
+  padding-left: 35px;
+  margin-right: 35px;
+}
+
+.form-container::placeholder {
+  color: #999;
+}
+
+.generate-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 85px;
+  font-size: 20px;
+  border-radius: 50px;
+  background: #08c;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.1s ease;
+}
+
+.generate-button:hover {
+  background: #016090;
+}
+
+.back-button {
+  align-self: flex-start;
+  padding-left: 20px;
+}
+
+.back-button button {
+  padding: 10px 20px;
+  background-color: #08c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-button button:hover {
+  background-color: #016090;
 }
