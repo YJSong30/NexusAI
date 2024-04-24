@@ -42,6 +42,10 @@ const GenImage = () => {
         </h1>
       </div>
 
+      {/* <div>
+        <img src={pic1} alt="pic1" />
+      </div> */}
+
       {generatedImages.length > 0 && (
         <div className="generate-picture">
           {generatedImages.map((image, index) => (
