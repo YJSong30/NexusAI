@@ -29,14 +29,14 @@ const GenImage = () => {
 
   return (
     <div className="image-container">
-      <div className="back-button">
+      <div className="back-button poppins-regular">
         <button onClick={() => window.history.back()} className="back-button">
           Back
         </button>
       </div>
 
       <div className="generate-header">
-        <h1>
+        <h1 class="poppins-bold">
           Nexus<span>AI</span>
         </h1>
       </div>

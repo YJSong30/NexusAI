@@ -86,6 +86,10 @@ body {
   font-size: 19px;
 }
 
+#logo span {
+  color: #08c;
+}
+
 .backdrop-container {
   position: relative;
   text-align: center;
@@ -262,7 +266,6 @@ body {
 
 .generate-header span {
   color: #08c;
-  font-weight: 600;
 }
 
 .search-box {
@@ -274,6 +277,10 @@ body {
   border-radius: 50px;
   background: #1b272e;
   margin-top: 400px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: white;
+  font-size: 20px;
 }
 
 .form-container {
@@ -290,6 +297,9 @@ body {
 
 .form-container::placeholder {
   color: #999;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-size: 20px;
 }
 
 .generate-button {
@@ -304,6 +314,9 @@ body {
   cursor: pointer;
   color: white;
   transition: background-color 0.1s ease;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: white;
 }
 
 .generate-button:hover {
@@ -314,7 +327,11 @@ body {
   align-self: flex-start;
   padding-left: 20px;
   padding-bottom: -20px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: white;
 }
+
 
 .back-button button {
   padding: 10px 20px;
