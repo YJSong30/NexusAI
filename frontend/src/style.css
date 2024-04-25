@@ -15,7 +15,7 @@ body {
 }
 
 #nav-box a,
-#nav-box a:visited,
+#nav-box a:visited,≈
 #nav-box a:active,
 #nav-auth a,
 #nav-auth a:visited,
@@ -145,7 +145,7 @@ body {
 
 .about-content h2,
 .feature-content h2,
-.tutorial-content h2 {
+.tutorial-content h2, .tutorial-container h2 {
   font-size: 35px;
   text-align: center;
 }
@@ -176,23 +176,60 @@ body {
   color: white;
 }
 
-.faq-container h2 {
+/* TUTORIAL SECTION */
+
+.tutorial-samples-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 100px; 
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tutorial-card {
+  background: #515151;
+  border-radius: 10px;
+  border: 1px solid #515151;
+  overflow: hidden;
+  width: 370px;
+  height: 450px;
+}
+
+.tutorial-card img {
+  display: block;
+  width: 370px;
+  height: 370px;
+}
+
+.image-description {
+  padding: 30px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+}
+
+
+/* FAQ SECTION */
+
+.faq-container h2, .tutorial-container h2 {
   text-align: center;
   font-size: 35px;
 }
 
-.faq-container h4 {
+.faq-container h4, .tutorial-container h4 {
   font-size: 20px;
   margin: 20px 0;
 }
 
-.faq-container p {
+.faq-container p, .tutorial-container p {
   font-size: 16px;
   margin: 0 0 10px 0;
   padding-left: 50px;
 }
 
-.faq-container {
+.faq-container, .tutorial-container {
   padding: 17px 160px;
 }
 

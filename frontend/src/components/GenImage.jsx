@@ -14,7 +14,6 @@ const GenImage = () => {
 
     try {
       // send prompt to backend
-
       const response = await axios.post(
         "http://localhost:8080/generate-image",
         { prompt }

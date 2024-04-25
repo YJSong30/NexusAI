@@ -13,7 +13,6 @@ const MainScreen = () => {
       <div><NavBar /></div>
       <div><Main /></div>
       <div id="about"><About /></div>
-      <div id="feature"><Feature /></div>
       <div id="tutorial"><Tutorial /></div>
       <div id="faq"><FAQ /></div>
       <div><Footer /></div>
