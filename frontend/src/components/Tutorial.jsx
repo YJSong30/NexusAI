@@ -1,6 +1,7 @@
 import React from 'react';
 import cyberpunkNightImage from '../images/2d-cyberpunkscene-night.png';
 import skyCityScene from '../images/2d-skycityscene-topview.png';
+import futureCityScene from '../images/2d-futurecityscene-night.png';
 const Tutorial = () => {
   return (
     <div class='tutorial-container'>
@@ -31,8 +32,12 @@ const Tutorial = () => {
           <div class="image-description poppins-regular">2d-cyberpunkscene, more blue, town, night, top view</div>
         </div>
         <div class="tutorial-card">
+          <img src={futureCityScene} alt="2d-futurecityscene-night"/>
+          <div class="image-description poppins-regular">2d-futurecityscene, night, ((futuristic))</div>
+        </div>
+        <div class="tutorial-card">
           <img src={skyCityScene} alt="2d-skycityscene-topview"/>
-          <div class="image-description poppins-regular">2d-skycitescene, town, ((water)), top view</div>
+          <div class="image-description poppins-regular">2d-skycityscene, town, ((water)), top view</div>
         </div>
       </div>
         
