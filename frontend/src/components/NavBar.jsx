@@ -10,10 +10,6 @@ const NavBar = () => {
                 <li><a href="#tutorial">Tutorial</a></li>
                 <li><a href="#faq">FAQ</a></li>
             </ul>
-            <ul id='nav-auth' className='poppins-regular'>
-              <li>Sign In</li>
-              <li id='get-started'>Get Started</li>
-            </ul>
         </div>
     </nav>
   );

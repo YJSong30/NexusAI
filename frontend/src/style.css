@@ -9,7 +9,7 @@ body {
 
 #nav-box {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   border-bottom: 0.5px solid #4d4d4d;
 }
@@ -37,27 +37,18 @@ body {
 }
 
 #nav {
-  padding-left: 160px;
-}
-
-#nav-auth {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 160px;
-  padding-left: 0px;
+  justify-content: space-around;
+  width: 100%; 
+  list-style: none;
+  margin-left: 50px; 
+  margin-right: 50px; 
 }
 
 #nav li {
   display: inline-block;
   color: white;
   margin-right: 90px;
-  font-size: 15px;
-}
-
-#nav-auth li {
-  display: inline-block;
-  color: white;
-  margin-left: 90px;
   font-size: 15px;
 }
 
@@ -126,7 +117,7 @@ body {
 .backdrop-button:hover {
   filter: brightness(
     80%
-  ); /* Adjust brightness or add any other desired hover effect */
+  ); 
 }
 
 .backdrop-content h1 {
@@ -214,7 +205,6 @@ body {
   color: white;
 }
 
-
 /* FAQ SECTION */
 
 .faq-container h2, .tutorial-container h2 {
@@ -251,10 +241,23 @@ body {
 .image-container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 20px 20px 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
   margin: auto;
   align-items: center;
-
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .generate-header {
@@ -270,9 +273,10 @@ body {
 
 .search-box {
   display: flex;
+  width: 100%; /* Adjusted to full width if it's inside a container with restricted width */
+  justify-content: center; /* Center the items horizontally */
   width: 1000px;
   height: 95px;
-  justify-content: space-around;
   align-items: center;
   border-radius: 50px;
   background: #1b272e;
@@ -284,6 +288,7 @@ body {
 }
 
 .form-container {
+  flex-grow: 1; /* Allows the input to fill the space */
   background: transparent;
   width: 600px;
   height: 50px;
@@ -323,17 +328,15 @@ body {
   background: #016090;
 }
 
-.back-button {
+.back-button, .tutorial-button {
   align-self: flex-start;
   padding-left: 20px;
-  padding-bottom: -20px;
   font-family: "Poppins", sans-serif;
   font-style: normal;
   color: white;
 }
 
-
-.back-button button {
+.back-button, .tutorial-button {
   padding: 10px 20px;
   background-color: #08c;
   color: white;
@@ -345,6 +348,49 @@ body {
 
 .back-button button:hover {
   background-color: #016090;
+}
+
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tutorial-popup{
+  background-color: #1b1b1b;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  width: 25%; /* Adjusted width */
+  max-width: 600px; /* Ensures it doesn't get too large on wider screens */
+}
+
+.tutorial-popup button {
+  display: block;
+  margin: 20px auto; /* Adds top and bottom margin for spacing, and auto horizontally centers the button */
+}
+
+.tutorial-popul ol {
+  padding-left: 30px;
+}
+
+.tutorial-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #007BFF; /* Bootstrap primary blue for example */
+  text-decoration: none;
+}
+
+.tutorial-link:hover {
+  text-decoration: underline;
 }
 
 /* Large screens */
