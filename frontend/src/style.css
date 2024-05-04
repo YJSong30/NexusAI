@@ -2,41 +2,53 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #161616;
+  background-color: #1b1b1b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 #nav-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.5px solid #4d4d4d;
+}
+
+#nav-box a,
+#nav-box a:visited,≈
+#nav-box a:active,
+#nav-auth a,
+#nav-auth a:visited,
+#nav-auth a:active {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 0.5px solid #4d4d4d;
+  text-decoration: none;
+  color: white;
+}
+
+#nav-box a:hover,
+#nav-auth a:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 #nav {
-  padding-left: 160px;
-}
-
-#nav-auth {
   display: flex;
-  justify-content: flex-end;
-  padding-right: 160px;
-  padding-left: 0px;
+  justify-content: space-around;
+  width: 100%; 
+  list-style: none;
+  margin-left: 50px; 
+  margin-right: 50px; 
 }
 
 #nav li {
   display: inline-block;
   color: white;
   margin-right: 90px;
-  font-size: 15px;
-}
-
-#nav-auth li {
-  display: inline-block;
-  color: white;
-  margin-left: 90px;
   font-size: 15px;
 }
 
@@ -63,6 +75,10 @@ body {
 
 #nav #logo {
   font-size: 19px;
+}
+
+#logo span {
+  color: #08c;
 }
 
 .backdrop-container {
@@ -101,7 +117,7 @@ body {
 .backdrop-button:hover {
   filter: brightness(
     80%
-  ); /* Adjust brightness or add any other desired hover effect */
+  ); 
 }
 
 .backdrop-content h1 {
@@ -120,11 +136,13 @@ body {
 .about-content {
   padding-top: 20px;
   text-align: center;
-  /* border: 1px solid white; */
 }
 
-.about-content h2 {
+.about-content h2,
+.feature-content h2,
+.tutorial-content h2, .tutorial-container h2 {
   font-size: 35px;
+  text-align: center;
 }
 
 .about-content p {
@@ -136,18 +154,15 @@ body {
 }
 
 .about-image-container {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 32px;
   margin: 0 160px;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  row-gap: 32px;
+  grid-template-columns: repeat(2, 1fr);
 }
 
 .about-image-container img {
-  width: 260px;
-  height: 260px;
+  width: 100%;
+  height: auto;
   border-radius: 10px;
   border: 1px solid #515151;
 }
@@ -156,23 +171,59 @@ body {
   color: white;
 }
 
-.faq-container h2 {
+/* TUTORIAL SECTION */
+
+.tutorial-samples-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 70px; 
+  justify-content: center;
+  align-items: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.tutorial-card {
+  background: #515151;
+  border-radius: 10px;
+  border: 1px solid #515151;
+  overflow: hidden;
+  width: 320px;
+  height: 400px;
+}
+
+.tutorial-card img {
+  display: block;
+  width: 320px;
+  height: 320px;
+}
+
+.image-description {
+  padding: 18px 40px 20px 40px;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+}
+
+/* FAQ SECTION */
+
+.faq-container h2, .tutorial-container h2 {
   text-align: center;
   font-size: 35px;
 }
 
-.faq-container h4 {
+.faq-container h4, .tutorial-container h4 {
   font-size: 20px;
   margin: 20px 0;
 }
 
-.faq-container p {
+.faq-container p, .tutorial-container p {
   font-size: 16px;
   margin: 0 0 10px 0;
   padding-left: 50px;
 }
 
-.faq-container {
+.faq-container, .tutorial-container {
   padding: 17px 160px;
 }
 
@@ -185,4 +236,185 @@ body {
   text-align: center;
   font-size: 15px;
   border-top: 0.5px solid #4d4d4d;
+}
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0px 20px 20px 20px;
+}
+
+.header {
+  display: flex;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+}
+
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  align-items: center;
+  width: 100%;
+}
+
+.generate-header {
+  font-size: 40px;
+  font-weight: 500;
+  padding-bottom: 20px;
+  margin-top: -50px;
+}
+
+.generate-header span {
+  color: #08c;
+}
+
+.search-box {
+  display: flex;
+  width: 100%; /* Adjusted to full width if it's inside a container with restricted width */
+  justify-content: center; /* Center the items horizontally */
+  width: 1000px;
+  height: 95px;
+  align-items: center;
+  border-radius: 50px;
+  background: #1b272e;
+  margin-top: 400px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: white;
+  font-size: 20px;
+}
+
+.form-container {
+  flex-grow: 1; /* Allows the input to fill the space */
+  background: transparent;
+  width: 600px;
+  height: 50px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+  color: white;
+  padding-left: 35px;
+  margin-right: 35px;
+}
+
+.form-container::placeholder {
+  color: #999;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-size: 20px;
+}
+
+.generate-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 85px;
+  font-size: 20px;
+  border-radius: 50px;
+  background: #08c;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.1s ease;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: white;
+}
+
+.generate-button:hover {
+  background: #016090;
+}
+
+.back-button, .tutorial-button {
+  align-self: flex-start;
+  padding-left: 20px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: white;
+}
+
+.back-button, .tutorial-button {
+  padding: 10px 20px;
+  background-color: #08c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.back-button button:hover {
+  background-color: #016090;
+}
+
+.tutorial-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tutorial-popup{
+  background-color: #1b1b1b;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  z-index: 2;
+  width: 25%; /* Adjusted width */
+  max-width: 600px; /* Ensures it doesn't get too large on wider screens */
+}
+
+.tutorial-popup button {
+  display: block;
+  margin: 20px auto; /* Adds top and bottom margin for spacing, and auto horizontally centers the button */
+}
+
+.tutorial-popul ol {
+  padding-left: 30px;
+}
+
+.tutorial-link {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+  color: #007BFF; /* Bootstrap primary blue for example */
+  text-decoration: none;
+}
+
+.tutorial-link:hover {
+  text-decoration: underline;
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .about-image-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.generate-picture {
+  margin-top: -50px;
+  margin-bottom: -380px;
+}
+
+.loader {
+  width: 40px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid;
+  border-color: #f3f3f3 #0000;
+  animation: l1 1s infinite;
+}
+@keyframes l1 {
+  to {
+    transform: rotate(0.5turn);
+  }
 }

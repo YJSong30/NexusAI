@@ -5,15 +5,10 @@ const NavBar = () => {
     <nav>
         <div id='nav-box'>
             <ul id='nav' class='poppins-regular'>
-                <li id='logo' className='poppins-bold'>NexusAI</li>
-                <li>About</li>
-                <li>Features</li>
-                <li>Tutorial</li>
-                <li>FAQ</li>
-            </ul>
-            <ul id='nav-auth' className='poppins-regular'>
-              <li>Sign In</li>
-              <li id='get-started'>Get Started</li>
+                <li id='logo' className='poppins-bold'>Nexus<span>AI</span></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#tutorial">Tutorial</a></li>
+                <li><a href="#faq">FAQ</a></li>
             </ul>
         </div>
     </nav>
