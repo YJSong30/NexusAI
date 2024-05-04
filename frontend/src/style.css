@@ -263,8 +263,12 @@ body {
 .generate-header {
   font-size: 40px;
   font-weight: 500;
-  padding-bottom: 20px;
+  margin: 0px;
   margin-top: -50px;
+}
+
+.generate-header h1 {
+  margin: 20px;
 }
 
 .generate-header span {
@@ -400,8 +404,16 @@ body {
   }
 }
 
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  justify-content: center; 
+  text-align: center;
+}
+
 .generate-picture {
-  margin-top: -50px;
+  margin-top: -30px;
   margin-bottom: -380px;
 }
 

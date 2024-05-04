@@ -1,7 +1,6 @@
 import { useState } from "react";
 //import ErrorMessage from "./ErrorMessage";
 import axios from "axios";
-import pic1 from "../images/pic1.png";
 
 const GenImage = () => {
   const [prompt, setPrompt] = useState("");
