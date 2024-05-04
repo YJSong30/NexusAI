@@ -26,11 +26,10 @@ files:
   - source: /
     destination: /home/ubuntu/app
       
-# TODO: add shell script to start our server on new deployment
-## If you are not running any commands on the Amazon EC2 instance, then remove 
-##   the "hooks" section altogether. A blank or incomplete "hooks" section
-##   may cause associated deployments to fail.
-#hooks:
+# If you are not running any commands on the Amazon EC2 instance, then remove 
+#   the "hooks" section altogether. A blank or incomplete "hooks" section
+#   may cause associated deployments to fail.
+hooks:
 ## For each deployment lifecycle event, specify multiple "location" entries 
 ##   if you want to run multiple scripts during that event.
 ## You can specify "timeout" as the number of seconds to wait until failing the deployment 
@@ -61,39 +60,27 @@ files:
 #    - location: 
 #      timeout:
 #      runas: 
-## During the BeforeInstall deployment lifecycle event, run the commands 
-##   in the script specified in "location".
-#  BeforeInstall:
-#    - location: 
-#      timeout:
-#      runas: 
-#    - location: 
-#      timeout:
-#      runas:
-## During the AfterInstall deployment lifecycle event, run the commands 
-##   in the script specified in "location".
-#  AfterInstall:
-#    - location:     
-#      timeout: 
-#      runas:
-#    - location: 
-#      timeout:
-#      runas:
+# During the BeforeInstall deployment lifecycle event, run the commands 
+#   in the script specified in "location".
+  BeforeInstall:
+    - location: aws/scripts/before-install.sh
+      timeout: 300
+      runas: root
+# During the AfterInstall deployment lifecycle event, run the commands 
+#   in the script specified in "location".
+  AfterInstall:
+    - location: aws/scripts/after-install.sh
+      timeout: 300
+      runas: root
 ## During the ApplicationStart deployment lifecycle event, run the commands 
 ##   in the script specified in "location".
 #  ApplicationStart:
 #    - location:     
 #      timeout: 
 #      runas:
-#    - location: 
-#      timeout:
-#      runas:
-## During the ValidateService deployment lifecycle event, run the commands 
-##   in the script specified in "location".
-#  ValidateService:
-#    - location:     
-#      timeout: 
-#      runas:
-#    - location: 
-#      timeout:
-#      runas:
+# During the ValidateService deployment lifecycle event, run the commands 
+#   in the script specified in "location".
+ValidateService:
+  - location: aws/scripts/validate-service.sh
+    timeout: 300
+    runas: root

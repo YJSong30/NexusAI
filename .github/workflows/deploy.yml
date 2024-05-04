@@ -1,54 +1,65 @@
 name: Build and Deploy
 
 on:
-  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+      - NickAhn/ci-cd
 
 env:
   applicationfolder: /
-  AWS_REGION: ##region##
-  S3BUCKET: ##s3-bucket## 
-
 
 jobs:
-  build:
-    name: Build and Package
+  test:
+    name: Verify github secrets are set
     runs-on: ubuntu-latest
-    permissions:
-      id-token: write
-      contents: read
     steps:
-      - uses: actions/checkout@v2
-        name: Checkout Repository
+      - name: Print start message
+        run: echo "Starting test"
 
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
-          role-session-name: GitHub-Action-Role
-          aws-region: ${{ env.AWS_REGION }}
+      - name: Check for github secrets
+        run: |
+          secrets=(
+            ${{ secrets.AWS_REGION }}
+            ${{ secrets.AWS_ACCESS_KEY_ID }}
+            ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            ${{ secrets.AWS_SAGEMAKER_ENDPOINT }}
+          )
 
-      - name: chmod
-        run: chmod -R +x ./.github
-          
-      - name: Upload Artifact to s3
-        working-directory: ${{ env.applicationfolder }}/target
-        run: aws s3 cp *.war s3://${{ env.S3BUCKET }}/
-        
+          for secret in "$secrets[@]"; do
+            if [[ -z "${{ secrets.AWS_REGION }}" ]]; then
+              echo "Missing github secrets"
+              exit 1
+            fi
+          done
+      
   deploy:
-    needs: build
+    needs: test
+    name: Build and Deploy 
     runs-on: ubuntu-latest
-    environment: Dev
     permissions:
       id-token: write
       contents: read
     steps:
-    - uses: actions/checkout@v2
-    - uses: aws-actions/configure-aws-credentials@v1
-      with:
-        role-to-assume: ${{ secrets.IAMROLE_GITHUB }}
-        role-session-name: GitHub-Action-Role
-        aws-region: ${{ env.AWS_REGION }}
-    - run: |
-        echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }}"
-        commit_hash=`git rev-parse HEAD`
-        aws deploy create-deployment --application-name nexus-ai-app --deployment-group-name nexus-ai-DprGrp --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash --ignore-application-stop-failures
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Setup AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            #aws-region: ${{ secrets.AWS_REGION }}
+          aws-region: us-west-1
+
+      - name: Deploy repo with AWS CodeDeploy
+        run: |
+          echo "Deploying branch ${{ env.GITHUB_REF }} to ${{ github.event.inputs.environment }}"
+          commit_hash=`git rev-parse HEAD`
+          aws deploy create-deployment \
+              --application-name nexus-ai-app \
+              --deployment-group-name nexus-ai-DplGrp \
+              --github-location repository=$GITHUB_REPOSITORY,commitId=$commit_hash \
+              --ignore-application-stop-failures \
+              --region us-west-1
 
